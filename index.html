@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,232 +7,92 @@
 	<link rel="stylesheet" href="styles.css">
 	<script defer src="script.js"></script>
   <title>ProtonVPN Конвертер</title>
-  <style>
-    /* دکمه تغییر زبان کوچک و دایره‌ای در بالا سمت چپ */
-    #langToggle {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      user-select: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: background-color 0.3s ease;
-    }
-    #langToggle:hover {
-      background-color: #0056b3;
-    }
-  </style>
 </head>
-<body dir="rtl">
-  <!-- دکمه تغییر زبان -->
-  <button id="langToggle" title="تغییر زبان">ف</button>
-
+<body>
   <div class="wrapper">
     <img src="logo.svg" alt="Логотип" style="display: block; margin: 0 auto; max-width: 400px; padding-bottom: 20px">
-
 	<div class="container-columns">
 		<div class="container">
-			<label for="wgFiles" class="custom-file-upload" id="fileUploadLabel">
-        <span class="fa-text">انتخاب فایل‌ها</span>
-        <span class="en-text" style="display:none;">Select files</span>
-      </label>
+			<label for="wgFiles" class="custom-file-upload" id="fileUploadLabel">Select files</label>
 			<input type="file" id="wgFiles" accept=".conf" multiple class="hidden-input">
-			<button onclick="convert()">
-        <span class="fa-text">تبدیل</span>
-        <span class="en-text" style="display:none;">Convert</span>
-      </button>
-
-			<label>
-        <div class="checkbox">
+			<button onclick="convert()">Convert</button>
+				<label><div class="checkbox">
 					<input type="radio" id="clash" name="option" class="radio" checked/>
-					<span class="radio-fakeradio"></span>
-          <img src="Clash.webp" alt="AmneziaWG Icon" class="amnezia-icon">
-          <span class="fa-text">کلاش</span>
-          <span class="en-text" style="display:none;">Clash</span>
-				</div>
-      </label>
-			<br>
-			<label>
-        <div class="checkbox">
+					<span class="radio-fakeradio"></span><img src="Clash.webp" alt="AmneziaWG Icon" class="amnezia-icon">Clash
+				</div></label>
+				<br>
+				<label><div class="checkbox">
 					<input type="radio" id="awg" name="option" class="radio" />
-					<span class="radio-fakeradio"></span>
-          <img src="AWG.webp" alt="AmneziaWG Icon" class="amnezia-icon">
-          <span class="fa-text">آمنزیا WG</span>
-          <span class="en-text" style="display:none;">AmneziaWG</span>
-				</div>
-      </label>
-			<br>
-			<label>
-        <div class="checkbox">
+					<span class="radio-fakeradio"></span><img src="AWG.webp" alt="AmneziaWG Icon" class="amnezia-icon">AmneziaWG
+				</div></label>
+				<br>
+				<label><div class="checkbox">
 					<input type="radio" id="karing" name="option" class="radio" />
-					<span class="radio-fakeradio"></span>
-          <img src="Karing.webp" alt="AmneziaWG Icon" class="amnezia-icon">
-          <span class="fa-text">کارینگ</span>
-          <span class="en-text" style="display:none;">Karing</span>
-          <img src="Hiddify.webp" alt="AmneziaWG Icon" class="amnezia-icon">
-          <span class="fa-text">هیدیفای</span>
-          <span class="en-text" style="display:none;">Hiddify</span>
-				</div>
-      </label>
+					<span class="radio-fakeradio"></span><img src="Karing.webp" alt="AmneziaWG Icon" class="amnezia-icon">Karing 
+				<img src="Hiddify.webp" alt="AmneziaWG Icon" class="amnezia-icon">Hiddify
+				</div></label>
 		</div>
-
 		<div class="container2">
 			<div class="musor1">
-				<label>
-          <div class="checkbox">
+				<label><div class="checkbox">
 					<input type="radio" id="junk1" name="junk" class="radio" checked/>
-					<span class="radio-fakeradio"></span>
-          <span class="fa-text">jc = 3 jmin = 1 jmax = 3</span>
-          <span class="en-text" style="display:none;">jc = 3 jmin = 1 jmax = 3</span>
-				</div>
-        </label>
+					<span class="radio-fakeradio"></span> jc = 3 jmin = 1 jmax = 3 
+				</div></label>
 				<br>
-				<label>
-          <div class="checkbox">
+				<label><div class="checkbox">
 					<input type="radio" id="junk2" name="junk" class="radio" />
-					<span class="radio-fakeradio"></span>
-          <span class="fa-text">jc = 30 jmin = 10 jmax = 30</span>
-          <span class="en-text" style="display:none;">jc = 30 jmin = 10 jmax = 30</span>
-				</div>
-        </label>
+					<span class="radio-fakeradio"></span> jc = 30 jmin = 10 jmax = 30 
+				</div></label>
 				<br>
-				<label>
-          <div class="checkbox" style="padding-bottom: 10px">
-				    <input type="radio" id="junk3" name="junk" class="radio" />
-				    <span class="radio-fakeradio"></span>
-            <span class="fa-text">گزینه دلخواه شما</span>
-            <span class="en-text" style="display:none;">Your own option</span>
-			    </div>
-        </label>
+				<label><div class="checkbox" style="padding-bottom: 10px">
+				<input type="radio" id="junk3" name="junk" class="radio" />
+				<span class="radio-fakeradio"></span> Your own option
+			</div></label>
 			jc = <textarea id="jc1" class="jc" rows="1" maxlength="3" type="number" placeholder="128"></textarea> 
 			jmin = <textarea id="jmin1" class="jc" rows="1" maxlength="4" type="number" placeholder="1279"></textarea> 
 			jmax = <textarea id="jmax1" class="jc" rows="1" maxlength="4" placeholder="1280"></textarea>
-			<button onclick="" class="randombtn">
-        <span class="fa-text">تصادفی</span>
-        <span class="en-text" style="display:none;">Accidentally</span>
-      </button>
+			<button onclick="" class="randombtn">Accidentally</button>
 		</div>
-
 		<div class="musor2 hidden">
-			<label>
-        <div class="checkbox">
+			<label><div class="checkbox">
 				<input type="radio" id="fake1" name="fake" class="radio" checked/>
-				<span class="radio-fakeradio"></span>
-        <span class="fa-text">f_p = 3, f_p_s = 1, f_p_d = 3</span>
-        <span class="en-text" style="display:none;">f_p = 3, f_p_s = 1, f_p_d = 3</span>
-			</div>
-      </label>
+				<span class="radio-fakeradio"></span> f_p = 3, f_p_s = 1, f_p_d = 3
+			</div></label>
 			<br>
-			<label>
-        <div class="checkbox">
+			<label><div class="checkbox">
 				<input type="radio" id="fake2" name="fake" class="radio" />
-				<span class="radio-fakeradio"></span>
-        <span class="fa-text">f_p = 1-10, f_p_s = 10-30, f_p_d = 10-30</span>
-        <span class="en-text" style="display:none;">f_p = 1-10, f_p_s = 10-30, f_p_d = 10-30</span>
-			</div>
-      </label>
+				<span class="radio-fakeradio"></span> f_p = 1-10, f_p_s = 10-30, f_p_d = 10-30
+			</div></label>
 			<br>
-			<label>
-        <div class="checkbox" style="padding-bottom: 10px">
+			<label><div class="checkbox" style="padding-bottom: 10px">
 				<input type="radio" id="fake3" name="fake" class="radio" />
-				<span class="radio-fakeradio"></span>
-        <span class="fa-text">گزینه دلخواه شما</span>
-        <span class="en-text" style="display:none;">Your own option</span>
-			</div>
-      </label>
+				<span class="radio-fakeradio"></span> Your own option
+			</div></label>
 			f_p = <textarea id="fp1" class="jc" rows="1" maxlength="7" type="number" placeholder="5-10"></textarea><br class="mobile-only">
 			f_p_s = <textarea id="fps1" class="jc" rows="1" maxlength="7" type="number" placeholder="40-100"></textarea><br class="mobile-only">
 			f_p_d = <textarea id="fpd1" class="jc" rows="1" maxlength="7" placeholder="20-250"></textarea>
-			<button onclick="" class="randombtn2">
-        <span class="fa-text">تصادفی</span>
-        <span class="en-text" style="display:none;">Accidentally</span>
-      </button>
-		</div>
-	</div>
-
-	<div class="infobtn">
-		<div class="file-list" id="fileList"></div>
-		<div class="result" id="output">
-			<textarea id="yamlOutput" placeholder="نتیجه اینجا نمایش داده می‌شود..." class="textarea1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-			<div class="button-container">
-				<button class="download-btn hidden" id="downloadBtn">
-          <span class="fa-text">دانلود</span>
-          <span class="en-text" style="display:none;">Download</span>
-        </button>
-				<button class="download-btn hidden" id="copyBtn">
-          <span class="fa-text">کپی</span>
-          <span class="en-text" style="display:none;">Copy</span>
-        </button>
+			<button onclick="" class="randombtn2">Accidentally</button>
 			</div>
 		</div>
-		<button id="warpButton" style="width: 100%; max-width: 400px;">
-      <span class="fa-text">کلودفلر وارپ</span>
-      <span class="en-text" style="display:none;">Cloudflare WARP</span>
-    </button>
-		<button id="githubButton" style="width: 100%; max-width: 400px;">
-      <span class="fa-text">راهنما</span>
-      <span class="en-text" style="display:none;">Guide</span>
-    </button>
-		<button id="telegramButton" style="width: 100%; max-width: 400px;">
-      <span class="fa-text">تلگرام</span>
-      <span class="en-text" style="display:none;">Telegram</span>
-    </button>
-		<button id="BoostyButton" style="width: 100%; max-width: 400px;">
-      <span class="fa-text">حمایت از نویسنده</span>
-      <span class="en-text" style="display:none;">Support the author</span>
-    </button>
-		<div id="newButtons">
-			<button id="DonationAlertsButton">
-        <span class="fa-text">کلودتیپس</span>
-        <span class="en-text" style="display:none;">CloudTips</span>
-      </button>
-			<button id="BoostyNewButton">
-        <span class="fa-text">بوستی</span>
-        <span class="en-text" style="display:none;">Boosty</span>
-      </button>
-		</div>
-		<div id="info1">
-      <span class="fa-text">ساخته شده بر اساس zaeboba.github.io/page/archive/clash.html</span>
-      <span class="en-text" style="display:none;">Made based on zaeboba.github.io/page/archive/clash.html</span>
-    </div>
 	</div>
-  </div>
-
-  <script>
-    const langToggle = document.getElementById('langToggle');
-    const faTexts = document.querySelectorAll('.fa-text');
-    const enTexts = document.querySelectorAll('.en-text');
-
-    langToggle.addEventListener('click', () => {
-      if (langToggle.textContent === 'ف') {
-        // تغییر به انگلیسی
-        faTexts.forEach(el => el.style.display = 'none');
-        enTexts.forEach(el => el.style.display = 'inline');
-        langToggle.textContent = 'E';
-        document.documentElement.lang = 'en';
-        document.body.dir = 'ltr';
-      } else {
-        // تغییر به فارسی
-        faTexts.forEach(el => el.style.display = 'inline');
-        enTexts.forEach(el => el.style.display = 'none');
-        langToggle.textContent = 'ف';
-        document.documentElement.lang = 'fa';
-        document.body.dir = 'rtl';
-      }
-    });
-  </script>
-</body>
-</html>
+		<div class="infobtn">
+			<div class="file-list" id="fileList"></div>
+			<div class="result" id="output">
+				<textarea id="yamlOutput" placeholder="The result will appear here..." class="textarea1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+				<div class="button-container">
+					<button class="download-btn hidden" id="downloadBtn">Download</button>
+					<button class="download-btn hidden" id="copyBtn">Copy</button>
+				</div>
+			</div>
+			<button id="warpButton" style="width: 100%; max-width: 400px;"><span class="button__text">Cloudflare WARP</span></button>
+			<button id="githubButton" style="width: 100%; max-width: 400px;"><span class="button__text">Гайд</span></button>
+			<button id="telegramButton" style="width: 100%; max-width: 400px;"><span class="button__text">Telegram</span></button>
+			<button id="BoostyButton" style="width: 100%; max-width: 400px;"><span class="button__text">Support the author</span></button>
+			<div id="newButtons">
+				<button id="DonationAlertsButton"><span class="button__text">CloudTips</span></button>
+				<button id="BoostyNewButton"><span class="button__text">Boosty</span></button>
+			</div>
+			<div id="info1">Сделано на основе zaeboba.github.io/page/archive/clash.html</div>
+		</div>
+	</div>
+</body></html>
